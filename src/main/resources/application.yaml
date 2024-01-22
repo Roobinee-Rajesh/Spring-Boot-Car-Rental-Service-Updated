@@ -1,0 +1,46 @@
+# Common Configuration
+spring:
+  profiles:
+    active: default
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  main:
+    lazy-initialization: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: roobinee.official@gmail.com
+    password: qweh ojbn mqhs tzdm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 10000
+          timeout: 10000
+scheduled:
+  job:
+    cron:
+      expression: "0 0 0 1 * ?"
+cors:
+  allowed-methods: GET,POST,PUT,DELETE
+security:
+  permit-all-endpoints: /api/auth/**,/swagger-ui/**,/api/user/car/allAvailableCars/**,/api/user/car/filteredCars/**,/api/downloadFile/**,/api/email/send-email/**
+
